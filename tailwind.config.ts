@@ -8,10 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        satoshi: ['Satoshi', 'sans-serif'],
+        integral: ['"Integral CF"', 'sans-serif'],
+      },
+      
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'custom-bg': "url('/Rectangle 2 (1).png')",
       },
     },
   },
