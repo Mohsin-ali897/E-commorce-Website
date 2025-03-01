@@ -1,104 +1,184 @@
-"use client"
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ShoppingCart, User, Menu, X } from "lucide-react"; // Lucide icons
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-
-function Navbar() {
-  
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
 
   return (
-    <>
-      <nav className="h-[48px] flex justify-between md:justify-center items-center text-center mt-[20px] relative">
-        <div className="flex pl-[18px] md:p-0">
-          
-          <Image
-            src={"/HamBurgur.png"}
-            alt="Hamburger Menu"
-            width={22.13}
-            height={20.25}
-            className="md:hidden cursor-pointer"
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-          />
-          
+    <nav className="bg-white shadow-md">
+      <div className="flex justify-between items-center h-16 w-full py-2 px-7">
+        {/* Logo */}
+        <div>
           <Image
             src={"/SHOP.CO.png"}
             alt="Logo"
             width={160}
             height={22}
-            className="ml-[16px] md:mr-[37px]"
+            className="ml-4 md:mr-6 w-24 sm:w-36 md:w-40 "
           />
+        </div>
 
-          <ul
-            className={`${
-              isMenuOpen
-                ? "flex absolute left-1 top-[50px] h-[321px] w-[30%] justify-around bg-black text-white flex-col"
-                : "hidden"
-            } sm:text-[12px] md:text-[16px] md:flex md:gap-[15px] md:ml-[40px] md:relative md:bg-transparent md:text-black md:flex-row`}
-          >
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-5">
+          <ul className="flex gap-5 list-none">
             <li>
-              <Link href={"/"} className="hover:text-gray-500">
-                Shop
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/"
+              >
+                HOME
               </Link>
             </li>
             <li>
-              <Link href={"/"} className="hover:text-gray-500">
-                On Sale
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/shop"
+              >
+                SHOP
               </Link>
             </li>
             <li>
-              <Link href={"/"} className="hover:text-gray-500">
-                New Arrivals
-              </Link>
-            </li>
-            <li>
-              <Link href={"/"} className="hover:text-gray-500">
-                Brands
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/contact"
+              >
+                CONTACT
               </Link>
             </li>
           </ul>
         </div>
 
-        <div className="flex justify-end pr-[18px] md:pr-0 md:items-center md:ml-[40px] md:relative">
-          {/* Search Icon */}
-          <div className="text-black md:absolute md:left-4 md:top-1/2 md:transform md:-translate-y-1/2">
-            <Image
-              src={"/magnifing.png"}
-              alt="Search Icon"
-              width={20}
-              height={20}
-              className="cursor-pointer"
-            />
-          </div>
-
-          {/* Search Bar */}
+        {/* Search & Icons */}
+        <div className="hidden md:flex items-center gap-7">
           <input
-            type="search"
-            name="search"
-            placeholder="Search for products..."
-            className="hidden md:flex sm:w-[300px] md:w-[577px] md:h-[48px] md:pl-[40px] md:pr-[10px] md:rounded-[62px] md:bg-[#F0F0F0] md:text-md md:outline-none"
+            className="h-9 w-[400px] px-5 border-2 rounded-2xl focus:outline-none focus:border-gray-400"
+            type="text"
+            placeholder="Search Products"
           />
-
-          {/* Cart and Profile Icons */}
-          <Image
-            src={"/Frame.png"}
-            alt="Cart"
-            width={22.13}
-            height={20.25}
-            className="w-[22.13px] h-[20.25px] ml-[15px] cursor-pointer"
-          />
-          <Image
-            src={"/Vector (1).png"}
-            alt="Profile"
-            width={22.13}
-            height={20.25}
-            className="w-[22.13px] h-[20.25px] ml-[15.87px] cursor-pointer "
-          />
+          <ul className="flex gap-5 list-none">
+            <li className="text-[25px] text-black no-underline hover:text-gray-600 transition duration-300">
+              <Link href="#">
+                <ShoppingCart className="text-black no-underline" />
+              </Link>
+            </li>
+            <li className="text-[25px] text-black no-underline hover:text-gray-600 transition duration-300">
+              <Link href="/account">
+                <User className="text-black no-underline" />
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md py-4">
+          <ul className="flex flex-col items-center gap-4 list-none">
+            <li>
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/"
+                onClick={() => setIsOpen(false)}
+              >
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/shop"
+                onClick={() => setIsOpen(false)}
+              >
+                SHOP
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="font-medium text-black hover:text-gray-600 transition duration-300 no-underline"
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+              >
+                CONTACT
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 }
 
-export default Navbar;
+// 'use client'
+// import { useState } from 'react';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { ShoppingCart, User } from 'lucide-react'; // Import icons from lucide-react
+
+// export default function Navbar() {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+//   const handleMenuToggle = () => {
+//     setIsMenuOpen(!isMenuOpen);
+//   };
+
+//   return (
+//     <div className="w-full bg-white shadow-md">
+//       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+//         {/* Logo */}
+//         <div className="flex items-center">
+//           <Image
+//             src="/SHOP.CO.png"
+//             alt="Logo"
+//             width={160}
+//             height={22}
+//             className="ml-2"
+//           />
+//         </div>
+
+//         {/* Hamburger Menu (for mobile) */}
+//         <div className="md:hidden" onClick={handleMenuToggle}>
+//           <div className="space-y-1">
+//             <div className="w-6 h-0.5 bg-gray-800"></div>
+//             <div className="w-6 h-0.5 bg-gray-800"></div>
+//             <div className="w-6 h-0.5 bg-gray-800"></div>
+//           </div>
+//         </div>
+
+//         {/* Navbar Links */}
+//         <div className={`md:flex space-x-10 ${isMenuOpen ? 'block' : 'hidden'}`}>
+//           <ul className="flex gap-10">
+//             <li><Link href="/" className="font-medium text-lg hover:text-gray-600">HOME</Link></li>
+//             <li><Link href="/shop" className="font-medium text-lg hover:text-gray-600">SHOP</Link></li>
+//             <li><Link href="/contact" className="font-medium text-lg hover:text-gray-600">CONTACT</Link></li>
+//           </ul>
+//         </div>
+
+//         {/* Search Input and Icons */}
+//         <div className="flex items-center gap-6">
+//           {/* Search Input */}
+//           <input className="h-9 w-[300px] px-5 border-2 rounded-lg" type="text" placeholder="Search Products" />
+
+//           {/* Icons */}
+//           <div className="flex gap-6">
+//             <Link href="#" className="text-xl">
+//               <ShoppingCart />
+//             </Link>
+//             <Link href="#" className="text-xl">
+//               <User />
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

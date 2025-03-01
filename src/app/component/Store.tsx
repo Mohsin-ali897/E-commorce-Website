@@ -1,19 +1,22 @@
+
+// export default Store;
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Store: React.FC = () => {
   const products = [
     {
       id: 1,
-      image: "/cloth1.png",
-      name: "T-SHIRT WITH TAPE DETAILS",
+      image: "/Swarovski 4470 Cushion Square Fancy Stone Crystal Laguna.png",
+      name: "Swarovski Pear Stone",
       price: "$120",
       rating: "4.5/5",
     },
     {
       id: 2,
-      image: "/cloth2.png",
-      name: "SKINNY FIT JEANS",
+      image: "/Gems Of Sri Lanka, Stone, Purple.png",
+      name: "Gems Of Sri Lanka, Stone, Purple",
       price: "$240",
       discountPrice: "$192",
       discount: "-20%",
@@ -21,15 +24,15 @@ const Store: React.FC = () => {
     },
     {
       id: 3,
-      image: "/cloth3.png",
-      name: "CHECKERED SHIRT",
+      image: "/Amethyst Cactus.png",
+      name: "Amethyst Cactus",
       price: "$180",
       rating: "4.5/5",
     },
     {
       id: 4,
-      image: "/cloth4.png",
-      name: "SLEEVE STRIPED T-SHIRT",
+      image: "/Amethyst Crystal.png",
+      name: "Amethyst Crystal",
       price: "$130",
       originalPrice: "$160",
       discount: "-30%",
@@ -39,56 +42,47 @@ const Store: React.FC = () => {
 
   return (
     <>
-      <section className="m-[72px]">
-        <h2 className="text-center md:text-5xl font-IntegralCF font-bold md:leading-[57.6px] text-[27.43px] leading-[38.5px] w-[100%] h-[38px]">
+      <section className="m-6 md:m-[72px]">
+        <h2 className="text-center text-2xl md:text-5xl font-bold leading-tight md:leading-[57.6px]">
           TOP SELLING
         </h2>
-        <div className="gap-5 my-[50px] pl-[32px] md:pl-0 md:flex md:justify-center sm:grid sm:grid-cols-2 grid grid-cols-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12 px-4 md:px-0">
           {products.map((product) => (
-            <div key={product.id}>
-              <div className="md:w-[295px] md:h-[298px] w-[198px] h-[200.01px]">
+            <div key={product.id} className="flex flex-col items-center text-center">
+              <div className="w-[198px] h-[200px] md:w-[295px] md:h-[298px] flex items-center justify-center bg-gray-200 rounded-lg">
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={295}
-                  height={298}
-                  className="rounded-[20px] transition-transform duration-200 ease-in transform hover:scale-105"
+                  width={150}
+                  height={150}
+                  className="rounded-[20px] transition-transform duration-200 ease-in-out hover:scale-105"
                 />
               </div>
-              <div>
-                <h3 className="md:text-lg font-bold text-[16px]">
-                  {product.name}
-                </h3>
-                <div className="flex gap-3 w-[150] h-[19] transition-transform duration-200 ease-in transform hover:scale-105">
-                  <Image
-                    src="/rating.png"
-                    alt="Rating"
-                    width={150}
-                    height={19}
-                  />
-                  <p className="text-sm">{product.rating}</p>
-                </div>
-                <h3 className="text-2xl font-bold font-satoshi">
-                  {product.price}{" "}
-                  {product.originalPrice && (
-                    <span className="line-through text-[#00000066] ml-[10px]">
-                      {product.originalPrice}
-                    </span>
-                  )}
-                  {product.discount && (
-                    <span className="bg-[#FF33331A] text-[#FF3333] text-lg text-center w-[58px] h-[28px] rounded-[62px] ml-[12px] py-[6px] px-[14px]">
-                      {product.discount}
-                    </span>
-                  )}
-                </h3>
+              <h3 className="text-lg md:text-xl font-bold uppercase mt-2">{product.name}</h3>
+              <div className="flex items-center gap-2">
+                <Image src="/rating.png" alt="Rating" width={100} height={20} />
+                <p className="text-sm">{product.rating}</p>
               </div>
+              <h3 className="text-xl md:text-2xl font-bold">
+                {product.price} 
+                {product.originalPrice && (
+                  <span className="line-through text-gray-400 ml-2">
+                    {product.originalPrice}
+                  </span>
+                )}
+                {product.discount && (
+                  <span className="bg-red-100 text-red-600 text-sm md:text-lg px-3 py-1 rounded-full ml-2">
+                    {product.discount}
+                  </span>
+                )}
+              </h3>
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center">
-          <button className="px-[54px] py-[12px] border border-black rounded-[62px] md:w-[216px] md:h-[52px] w-[358px] h-[46px] hover:bg-black hover:text-white">
+        <div className="flex justify-center">
+          <Link href={'/shop'} className="px-6 py-3 border border-black rounded-full md:w-[216px] w-full max-w-[358px] text-center hover:bg-black hover:text-white">
             View More
-          </button>
+          </Link>
         </div>
       </section>
     </>

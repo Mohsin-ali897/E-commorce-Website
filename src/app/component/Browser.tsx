@@ -14,7 +14,7 @@ function Browser() {
             {/* Casual */}
             <div className="grid col-span-4 md:mt-[64px] md:pl-[50px] w-[310px] h-[190px] md:w-[407px] md:h-[289px]">
               <Image
-                src={"/Casual.png"}
+                src={"/banner1.webp"}
                 alt="Casual"
                 width={407}
                 height={289}
@@ -25,7 +25,7 @@ function Browser() {
             {/* Formal */}
             <div className="col-span-8 md:mr-[30px] md:mt-[64px] w-[310px] h-[190px] md:ml-[40px] md:w-[684px] md:h-[289px]">
               <Image
-                src={"/Formal.png"}
+                src={"/banner4.webp"}
                 alt="Formal"
                 width={289}
                 height={190}
@@ -36,7 +36,7 @@ function Browser() {
             {/* Party */}
             <div className="col-span-8 md:mr-[20px] w-[310px] h-[190px] md:w-[684px] md:h-[289px] md:ml-[20px] transition-transform duration-200 ease-in transform hover:scale-105">
               <Image
-                src={"/Party.png"}
+                src={"/banner3.jpg"}
                 alt="Party"
                 width={684}
                 height={289}
@@ -47,7 +47,7 @@ function Browser() {
             {/* Gym */}
             <div className="col-span-4 w-[310px] h-[190px] md:w-[407px] md:h-[289px] md:pr-[40px]">
               <Image
-                src={"/Gym.png"}
+                src={"/banner2.webp"}
                 alt="Gym"
                 width={407}
                 height={289}

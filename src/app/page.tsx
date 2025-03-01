@@ -6,8 +6,8 @@ import Selling from './component/Selling'
 import HeroSection from './component/Hero'
 import Browser from './component/Browser'
 import Review from './component/Review'
-import Hero2 from './component/Hero2'
 import Footer from './component/Footer'
+import Offers from './component/offer'
 
 
 
@@ -17,20 +17,16 @@ export default function page() {
       <Header />
       <Navbar />
       
-      <div className='hidden md:block'>
         <HeroSection />
-      </div>
 
-    <div className='md:hidden'>
-      <Hero2 />
-    </div>
-
-      <div className='mt-[350px] md:mt-[200px]'>
         <Store />
-      </div>
+
       <Selling />
       <Browser />
       <Review />
+      <div className='my-12'>
+      <Offers/>
+      </div>
       <Footer />
     </>
   )
